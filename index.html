@@ -3,23 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>Password Protected Page</title>
+    <script>
+        function checkPassword() { 
+            const password = prompt("Please enter the password:");
+            const correctPassword = "091024"; // Change this to your desired password
+            if (password !== correctPassword) {
+                alert("Incorrect password. Access denied.");
+                window.location.href = "https://www.google.com"; // Redirect if the password is incorrect
+            } else {
+                document.getElementById("protectedContent").style.display = "block"; // Show content if password is correct
+            }
+        }
+    </script>
     <style>
-        .audio-container {
-            display: flex;
+        #protectedContent {
+            display: none; /* Hide content initially */
+        }
+
+        .protectedContent {
+            display: flex; 
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
     </style>
 </head>
-<body>
-    <div class="audio-container">
-        <audio controls>
-            <source src="audio.mp3">
-            Your browser does not support the audio element.
-        </audio>
-    </div>
+<body onload="checkPassword()">
+    
+        <div class="protectedContent">
+            <audio controls>
+                <source src="audio.mp3">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    
 </body>
 </html>
